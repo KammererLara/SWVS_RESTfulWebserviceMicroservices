@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>SensorDataService</module>
+        <module>ConfigurationService</module>
     </modules>
 
     <properties>
