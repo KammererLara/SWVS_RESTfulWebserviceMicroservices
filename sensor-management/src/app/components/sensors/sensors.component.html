@@ -1,0 +1,15 @@
+<div class="sensor-section">
+  <h2>Sensor Management</h2>
+
+  <!-- Sensor-Liste -->
+  <ul>
+    <li *ngFor="let sensor of sensors">
+      <h2>{{ sensor.name }}</h2>
+      <p>Type: {{ sensor.type }}</p>
+      <p>Description: {{ sensor.description }}</p>
+    </li>
+  </ul>
+
+  <!-- Button -->
+  <button (click)="addMockSensor()">Add Mock Sensor</button>
+</div>

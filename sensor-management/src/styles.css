@@ -1,0 +1,109 @@
+/* Basis-Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Globale Schriftart */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f4f4f9; /* Helles Grau für den Hintergrund */
+  color: #333; /* Dunkler Text */
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #4caf50; /* Grün */
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #388e3c; /* Dunkleres Grün beim Hover */
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50; /* Grün */
+  color: #fff;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #388e3c; /* Dunkleres Grün */
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(1);
+}
+
+/* Allgemeine Layouts */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.center-text {
+  text-align: center;
+}
+
+/* Karten-Design */
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #4caf50;
+}
+
+.card p {
+  margin: 0.3rem 0;
+  color: #666;
+}
+
+/* Sensor-Liste */
+.sensor-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Überschriften */
+h1, h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+/* Abstände */
+.margin-top {
+  margin-top: 2rem;
+}
+
+.margin-bottom {
+  margin-bottom: 2rem;
+}

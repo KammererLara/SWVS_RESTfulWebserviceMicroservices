@@ -1,0 +1,9 @@
+<div>
+  <h2>Measurements</h2>
+  <ul>
+    <li *ngFor="let measurement of measurements">
+      Sensor: {{ measurement.sensorId }}, Value: {{ measurement.value }}, Timestamp: {{ measurement.timestamp }}
+    </li>
+  </ul>
+  <button (click)="addMeasurement()">Add Measurement</button>
+</div>
