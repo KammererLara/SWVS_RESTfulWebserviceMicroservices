@@ -11,3 +11,6 @@ public class SensorsApiApplication {
 	}
 
 }
+
+//TODO File Datenbankstruktur anpassen für Sarah
+//am besten komplett aus mysql rausziehen - auch alle constraints

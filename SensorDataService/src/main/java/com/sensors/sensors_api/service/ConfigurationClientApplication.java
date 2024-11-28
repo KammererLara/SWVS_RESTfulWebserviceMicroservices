@@ -1,4 +1,4 @@
-//package com.sensors.sensors_api.sevice;
+//package com.sensors.sensors_api.service;
 //
 //import org.springframework.boot.SpringApplication;
 //import org.springframework.boot.autoconfigure.SpringBootApplication;

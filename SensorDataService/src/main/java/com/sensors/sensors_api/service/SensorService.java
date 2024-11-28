@@ -1,4 +1,4 @@
-package com.sensors.sensors_api.sevice;
+package com.sensors.sensors_api.service;
 
 import com.sensors.sensors_api.entities.Sensor;
 import com.sensors.sensors_api.repositories.SensorRepository;
