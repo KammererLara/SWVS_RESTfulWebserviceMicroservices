@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MeasurementService {
@@ -18,5 +19,13 @@ public class MeasurementService {
 
     public Measurement saveMeasurement(Measurement measurement) {
         return measurementRepository.save(measurement);
+    }
+
+    public Optional<Measurement> getMeasurementById(int id) {
+        return measurementRepository.findById((long) id);
+    }
+
+    public void deleteMeasurementById(int id) {
+        measurementRepository.deleteById((long) id);
     }
 }

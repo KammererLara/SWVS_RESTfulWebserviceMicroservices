@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SensorService {
@@ -18,5 +19,17 @@ public class SensorService {
 
     public Sensor saveSensor(Sensor sensor) {
         return sensorRepository.save(sensor);
+    }
+
+    public Optional<Sensor> getSensorById(int id) {
+        return sensorRepository.findById((long) id);
+    }
+
+    public Optional<Sensor> getSensorByName(String name) {
+        return sensorRepository.getSensorByName(name);
+    }
+
+    public void deleteSensorById(int id) {
+        sensorRepository.deleteById((long) id);
     }
 }
