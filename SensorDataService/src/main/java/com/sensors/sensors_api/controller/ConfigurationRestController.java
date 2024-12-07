@@ -16,3 +16,6 @@ public class ConfigurationRestController {
         return this.message;
     }
 }
+
+//TODO: kann entfernt werden - mein Port wird schon von Configurationserver bezogen - brauche ich sonst noch was?
+// Controller nötig? kann weg?

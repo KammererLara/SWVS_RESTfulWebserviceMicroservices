@@ -12,6 +12,7 @@
         <module>SensorDataService</module>
         <module>ConfigurationService</module>
         <module>ServiceRegistryService</module>
+        <module>APIGatewayService</module>
     </modules>
 
     <properties>
