@@ -16,38 +16,73 @@ public class MeasurementController {
     private MeasurementService measurementService;
 
     @PostMapping("/createMeasurement")
-    public ResponseEntity<Measurement> createmeasurement(@RequestBody Measurement measurement) {
-        Measurement createdMeasurement = measurementService.saveMeasurement(measurement);
-        return new ResponseEntity<>(createdMeasurement, HttpStatus.CREATED);
+    public ResponseEntity<?> createmeasurement(@RequestBody Measurement measurement) {
+        if (measurement == null
+                || measurement.getTimestamp() == null
+                || measurement.getSensor() == null)
+            return new ResponseEntity<>("Invalid measurement data", HttpStatus.BAD_REQUEST);
+
+        if (measurementService.getAllMeasurements().stream().map(Measurement::getId).toList().contains(measurement.getId()))
+            return new ResponseEntity<>("Measurement already exists", HttpStatus.NOT_ACCEPTABLE);
+        //TODO id kommt direkt schon mit??
+
+        try {
+            Measurement createdMeasurement = measurementService.saveMeasurement(measurement);
+            return new ResponseEntity<>(createdMeasurement, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/measurements")
-    public List<Measurement> getAllmeasurements() {
-        return measurementService.getAllMeasurements();
+    public ResponseEntity<?> getAllmeasurements() {
+        List<Measurement> measurements = measurementService.getAllMeasurements();
+        if (measurements == null|| measurements.isEmpty())
+            return new ResponseEntity<>("No measurements found", HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(measurements, HttpStatus.OK);
     }
 
     @GetMapping("/measurement/{id}")
-    public ResponseEntity<Measurement> getmeasurementById(@PathVariable("id") int id) {
+    public ResponseEntity<?> getmeasurementById(@PathVariable("id") int id) {
+        if (id <= 0)
+            return new ResponseEntity<>("Invalid ID provided", HttpStatus.BAD_REQUEST);
+
         return measurementService.getMeasurementById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/measurement")
-    public ResponseEntity<Measurement> updatemeasurement(@RequestBody Measurement measurement) {
-        Measurement createdMeasurement = measurementService.saveMeasurement(measurement);
-        return new ResponseEntity<>(createdMeasurement, HttpStatus.OK);
+    public ResponseEntity<?> updatemeasurement(@RequestBody Measurement measurement) {
+        if (measurement == null
+                || measurement.getId() <= 0
+                || measurement.getTimestamp() == null
+                || measurement.getSensor() == null)
+            return new ResponseEntity<>("Invalid measurement data", HttpStatus.BAD_REQUEST);
+
+        if (!measurementService.getAllMeasurements().stream().map(Measurement::getId).toList().contains(measurement.getId()))
+            return new ResponseEntity<>("Measurement doesn't exist", HttpStatus.NOT_FOUND);
+
+        try {
+            Measurement createdMeasurement = measurementService.saveMeasurement(measurement);
+            return new ResponseEntity<>(createdMeasurement, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/measurement/{id}")
-    public HttpStatus deleteMeasurement(@PathVariable("id") int id) {
+    public ResponseEntity<String> deleteMeasurement(@PathVariable("id") int id) {
+        if (id <= 0)
+            return new ResponseEntity<>("Invalid ID provided", HttpStatus.BAD_REQUEST);
+
+        if (!measurementService.getAllMeasurements().stream().map(Measurement::getId).toList().contains(id))
+            return new ResponseEntity<>("Measurement doesn't exist", HttpStatus.NOT_FOUND);
+
         measurementService.deleteMeasurementById(id);
-        return HttpStatus.OK;
+        return new ResponseEntity<>("Measurement deleted", HttpStatus.OK);
     }
 }
 
 //TODO: vll mit Swagger UI?
-
-//TODO: checks für alle methoden einbauen
-
-//TODO: vll kommt beim erzeugen nicht schon ein komplettes measurement/sensor mit id rein?
