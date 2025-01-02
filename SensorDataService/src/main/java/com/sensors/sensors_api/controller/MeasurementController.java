@@ -48,10 +48,6 @@ public class MeasurementController {
 
 //TODO: vll mit Swagger UI?
 
+//TODO: checks für alle methoden einbauen
 
-//TODO: CRUD funktionen implementieren
-// create check
-// readAll check
-// read -> findById/findAllById
-// update -> save mit bereits existenter Id
-// delete -> deleteById/deleteAllById/deleteAll
+//TODO: vll kommt beim erzeugen nicht schon ein komplettes measurement/sensor mit id rein?
