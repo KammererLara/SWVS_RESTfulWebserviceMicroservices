@@ -8,10 +8,10 @@
         <version>3.4.0</version>
         <relativePath/>
     </parent>
-    <groupId>com.api-gateway</groupId>
+    <groupId>com.group7</groupId>
     <artifactId>api-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>api-gateway</name>
+    <name>api-gateway-group7</name>
     <description>Centralized routing and load balancing for microservices</description>
 
     <properties>

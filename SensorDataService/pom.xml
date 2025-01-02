@@ -8,10 +8,10 @@
 		<version>3.3.5</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.sensors</groupId>
+	<groupId>com.group7</groupId>
 	<artifactId>sensors-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sensors-api</name>
+	<name>sensors-api-group7</name>
 	<description>REST API for sensor data storage and retrieval</description>
 
 	<properties>
