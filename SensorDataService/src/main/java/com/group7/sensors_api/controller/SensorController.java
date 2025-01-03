@@ -1,7 +1,9 @@
 package com.group7.sensors_api.controller;
 
 import com.group7.sensors_api.entities.Sensor;
+import com.group7.sensors_api.service.LocationService;
 import com.group7.sensors_api.service.SensorService;
+import com.group7.sensors_api.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,10 @@ import java.util.List;
 public class SensorController {
     @Autowired
     private SensorService sensorService;
+    @Autowired
+    private TypeService typeService;
+    @Autowired
+    private LocationService locationService;
 
     @PostMapping("/createSensor")
     public ResponseEntity<?> createSensor(@RequestBody Sensor sensor) {
@@ -24,10 +30,18 @@ public class SensorController {
                 || sensor.getType() == null)
             return new ResponseEntity<>("Invalid measurement data", HttpStatus.BAD_REQUEST);
 
+        if (typeService.getTypeById(sensor.getType().getId()).isEmpty())
+            return new ResponseEntity<>("Sensortype not found", HttpStatus.NOT_FOUND);
+
+        if (locationService.getLocationById(sensor.getLocation().getId()).isEmpty())
+            return new ResponseEntity<>("Location not found", HttpStatus.NOT_FOUND);
+
         if (sensor.getId() != 0)
             return new ResponseEntity<>("Id has to be created from backend", HttpStatus.NOT_ACCEPTABLE);
 
         try {
+            sensor.setType(typeService.getTypeById(sensor.getType().getId()).orElseThrow());
+            sensor.setLocation(locationService.getLocationById(sensor.getLocation().getId()).orElseThrow());
             Sensor createdSensor = sensorService.saveSensor(sensor);
             return new ResponseEntity<>(createdSensor, HttpStatus.CREATED);
         } catch (Exception e) {
