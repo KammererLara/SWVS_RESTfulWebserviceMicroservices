@@ -70,7 +70,11 @@ public class MeasurementController {
         if (!measurementService.getAllMeasurements().stream().map(Measurement::getId).toList().contains(measurement.getId()))
             return new ResponseEntity<>("Measurement doesn't exist", HttpStatus.NOT_FOUND);
 
+        if (sensorService.getSensorById(measurement.getSensor().getId()).isEmpty())
+            return new ResponseEntity<>("Sensor not found", HttpStatus.NOT_FOUND);
+
         try {
+            measurement.setSensor(sensorService.getSensorById(measurement.getSensor().getId()).orElseThrow());
             Measurement createdMeasurement = measurementService.saveMeasurement(measurement);
             return new ResponseEntity<>(createdMeasurement, HttpStatus.OK);
         } catch (Exception e) {

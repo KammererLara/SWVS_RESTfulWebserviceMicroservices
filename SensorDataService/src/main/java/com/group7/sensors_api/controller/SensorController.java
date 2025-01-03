@@ -88,7 +88,15 @@ public class SensorController {
         if (!sensorService.getAllSensors().stream().map(Sensor::getId).toList().contains(sensor.getId()))
             return new ResponseEntity<>("Measurement doesn't exist", HttpStatus.NOT_FOUND);
 
+        if (typeService.getTypeById(sensor.getType().getId()).isEmpty())
+            return new ResponseEntity<>("Sensortype not found", HttpStatus.NOT_FOUND);
+
+        if (locationService.getLocationById(sensor.getLocation().getId()).isEmpty())
+            return new ResponseEntity<>("Location not found", HttpStatus.NOT_FOUND);
+
         try {
+            sensor.setType(typeService.getTypeById(sensor.getType().getId()).orElseThrow());
+            sensor.setLocation(locationService.getLocationById(sensor.getLocation().getId()).orElseThrow());
             Sensor createdSensor = sensorService.saveSensor(sensor);
             return new ResponseEntity<>(createdSensor, HttpStatus.OK);
         } catch (Exception e) {
