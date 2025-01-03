@@ -24,9 +24,8 @@ public class SensorController {
                 || sensor.getType() == null)
             return new ResponseEntity<>("Invalid measurement data", HttpStatus.BAD_REQUEST);
 
-        if (sensorService.getAllSensors().stream().map(Sensor::getId).toList().contains(sensor.getId()))
-            return new ResponseEntity<>("Measurement already exists", HttpStatus.NOT_ACCEPTABLE);
-        //TODO id kommt direkt schon mit??
+        if (sensor.getId() != 0)
+            return new ResponseEntity<>("Id has to be created from backend", HttpStatus.NOT_ACCEPTABLE);
 
         try {
             Sensor createdSensor = sensorService.saveSensor(sensor);
