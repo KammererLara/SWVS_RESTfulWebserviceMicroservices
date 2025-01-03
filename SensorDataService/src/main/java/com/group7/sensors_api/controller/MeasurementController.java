@@ -41,7 +41,7 @@ public class MeasurementController {
     }
 
     @GetMapping("/measurements")
-    public ResponseEntity<?> getAllmeasurements() {
+    public ResponseEntity<?> getAllMeasurements() {
         List<Measurement> measurements = measurementService.getAllMeasurements();
         if (measurements == null|| measurements.isEmpty())
             return new ResponseEntity<>("No measurements found", HttpStatus.NOT_FOUND);
@@ -50,7 +50,7 @@ public class MeasurementController {
     }
 
     @GetMapping("/measurement/{id}")
-    public ResponseEntity<?> getmeasurementById(@PathVariable("id") int id) {
+    public ResponseEntity<?> getMeasurementById(@PathVariable("id") int id) {
         if (id <= 0)
             return new ResponseEntity<>("Invalid ID provided", HttpStatus.BAD_REQUEST);
 
@@ -60,7 +60,7 @@ public class MeasurementController {
     }
 
     @PutMapping("/measurement")
-    public ResponseEntity<?> updatemeasurement(@RequestBody Measurement measurement) {
+    public ResponseEntity<?> updateMeasurement(@RequestBody Measurement measurement) {
         if (measurement == null
                 || measurement.getId() <= 0
                 || measurement.getTimestamp() == null
