@@ -1,3 +1,6 @@
+<div>
+  <h1>Sensor Management</h1>
+</div>
 <table>
   <thead>
     <tr>
@@ -10,8 +13,8 @@
   <tbody>
     <tr *ngFor="let sensor of sensors">
       <td>{{ sensor.name }}</td>
-      <td>{{ sensor.location.id }}</td>
-      <td>{{ sensor.type.id }}</td>
+      <td>{{ sensor.location }}</td>
+      <td>{{ sensor.type }}</td>
       <td>{{ sensor.active }}</td>
     </tr>
   </tbody>

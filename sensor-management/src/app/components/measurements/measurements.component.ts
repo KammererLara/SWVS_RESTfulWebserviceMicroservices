@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MeasurementService } from '../../services/measurement.service';
 import { Measurement } from '../../models/measurement.model';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-measurements',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './measurements.component.html',
   styleUrls: ['./measurements.component.css']
 })

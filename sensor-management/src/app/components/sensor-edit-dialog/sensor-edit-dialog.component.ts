@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sensor-edit-dialog',
-  standalone: false,
+  standalone: true,
   templateUrl: './sensor-edit-dialog.component.html',
-  styleUrls: ['./sensor-edit-dialog.component.css']
+  styleUrls: ['./sensor-edit-dialog.component.css'],
+  imports: [ReactiveFormsModule]
 })
 export class SensorEditDialogComponent {
   sensorForm: FormGroup; 

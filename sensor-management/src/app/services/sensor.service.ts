@@ -6,6 +6,7 @@ import { Sensor } from '../models/sensor.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SensorService {
   private apiUrl = 'http://localhost:8081/sensorApi';
 

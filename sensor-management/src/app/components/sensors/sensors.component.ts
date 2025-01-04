@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { SensorService } from '../../services/sensor.service';
 import { Sensor } from '../../models/sensor.model';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-sensors',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './sensors.component.html',
   styleUrls: ['./sensors.component.css']
 })
