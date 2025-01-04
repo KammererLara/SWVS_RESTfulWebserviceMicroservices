@@ -1,0 +1,20 @@
+<h2>Edit Sensor</h2>
+<form [formGroup]="sensorForm" (ngSubmit)="onSubmit()">
+  <label>
+    Name:
+    <input formControlName="name">
+  </label>
+  <label>
+    Location:
+    <input formControlName="location">
+  </label>
+  <label>
+    Type:
+    <input formControlName="type">
+  </label>
+  <label>
+    Active:
+    <input type="checkbox" formControlName="active">
+  </label>
+  <button type="submit">Save</button>
+</form>

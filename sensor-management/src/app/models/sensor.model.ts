@@ -1,6 +1,12 @@
 export interface Sensor {
-  _id: string;
-  name: string;
-  type: string;
-  description?: string;
-}
+    id: number;
+    name: string;
+    location: {
+      id: number;
+    };
+    active: boolean;
+    type: {
+      id: number;
+    };
+  }
+  

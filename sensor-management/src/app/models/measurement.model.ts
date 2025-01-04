@@ -1,6 +1,9 @@
 export interface Measurement {
-  _id: string;
-  sensorId: string;
-  value: number;
-  timestamp: string;
-}
+    sensor: {
+      id: number;
+    };
+    timestamp: string;
+    temperature: number;
+    humidity: number;
+  }
+  

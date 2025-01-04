@@ -2,29 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Sensor } from '../models/sensor.model';
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SensorService {
-  private apiUrl = `${environment.apiUrl}/sensors`;
+  private apiUrl = 'http://localhost:8081/sensorApi';
 
   constructor(private http: HttpClient) {}
 
-  getSensors(): Observable<Sensor[]> {
-    return this.http.get<Sensor[]>(this.apiUrl);
+  getAllSensors(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/sensors`);
   }
 
-  addSensor(sensor: Sensor): Observable<Sensor> {
-    return this.http.post<Sensor>(this.apiUrl, sensor);
+  createSensor(sensor: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/createSensor`, sensor);
   }
 
-  updateSensor(id: string, sensor: Sensor): Observable<Sensor> {
-    return this.http.put<Sensor>(`${this.apiUrl}/${id}`, sensor);
+  updateSensor(sensor: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/sensor`, sensor);
   }
 
-  deleteSensor(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  deleteSensor(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/sensor/${id}`);
   }
 }
