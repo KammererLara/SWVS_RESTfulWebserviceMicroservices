@@ -1,12 +1,17 @@
+<h1>Measurement Diagrams</h1>
 <div>
-    <h2>Temperature and Humidity Diagrams</h2>
-    <div>
-      <h3>Temperature</h3>
-      <p>Data: {{ temperatureData }}</p>
-    </div>
-    <div>
-      <h3>Humidity</h3>
-      <p>Data: {{ humidityData }}</p>
-    </div>
-  </div>
-  
+  <h2>Temperature Over Time</h2>
+  <canvas
+    baseChart
+    [data]="temperatureChartData"
+    [type]="'line'">
+  </canvas>
+</div>
+<div>
+  <h2>Humidity Over Time</h2>
+  <canvas
+    baseChart
+    [data]="humidityChartData"
+    [type]="'line'">
+  </canvas>
+</div>

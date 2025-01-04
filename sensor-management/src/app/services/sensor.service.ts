@@ -8,7 +8,7 @@ import { Sensor } from '../models/sensor.model';
 })
 
 export class SensorService {
-  private apiUrl = 'http://localhost:8081/sensorApi';
+  private apiUrl = '/sensorApi';
 
   constructor(private http: HttpClient) {}
 

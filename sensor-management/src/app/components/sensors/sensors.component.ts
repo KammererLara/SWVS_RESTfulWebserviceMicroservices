@@ -19,6 +19,7 @@ export class SensorsComponent implements OnInit {
 
   ngOnInit(): void {
     this.sensorService.getAllSensors().subscribe((data: Sensor[]) => {
+      console.log('Empfangene Daten:', data);
       this.sensors = data;
     });
   }

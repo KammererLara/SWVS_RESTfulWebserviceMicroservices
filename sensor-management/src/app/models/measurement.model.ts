@@ -1,9 +1,19 @@
 export interface Measurement {
-    sensor: {
+  id: number;
+  sensor: {
+    id: number;
+    name: string;
+    location: {
       id: number;
+      name: string;
+      active: boolean;
     };
-    timestamp: string;
-    temperature: number;
-    humidity: number;
-  }
-  
+    type: {
+      id: number;
+      name: string;
+    };
+  };
+  timestamp: string;
+  temperature: number;
+  humidity: number;
+}

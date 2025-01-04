@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Measurement } from '../models/measurement.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,19 @@ export class MeasurementService {
 
   constructor(private http: HttpClient) {}
 
-  getAllMeasurements(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/measurements`);
+  getAllMeasurements(): Observable<Measurement[]> {
+    return this.http.get<Measurement[]>(`${this.apiUrl}/measurements`);
   }
 
-  createMeasurement(measurement: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/createMeasurement`, measurement);
+  createMeasurement(measurement: Measurement): Observable<Measurement> {
+    return this.http.post<Measurement>(`${this.apiUrl}/createMeasurement`, measurement);
+  }
+  
+  updateMeasurement(measurement: Measurement): Observable<Measurement> {
+    return this.http.put<Measurement>(`${this.apiUrl}/measurement`, measurement);
   }
 
-  updateMeasurement(measurement: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/measurement`, measurement);
-  }
-
-  deleteMeasurement(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/measurement/${id}`);
+  deleteMeasurement(id: number): Observable<Measurement> {
+    return this.http.delete<Measurement>(`${this.apiUrl}/measurement/${id}`);
   }
 }
